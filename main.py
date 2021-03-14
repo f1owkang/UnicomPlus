@@ -1,5 +1,7 @@
 import requests,json,time,re,login,logging,traceback,os,random,notify,datetime
 
+import daily-wotree as dwotree
+import daily-signin as dsignin
 
 #用户登录全局变量
 client = None
@@ -28,7 +30,14 @@ def main(event, context):
         global client
         client = login.login(user['username'],user['password'],user['appId'])
         if client != False:
-           #此处存放活动函数
+        
+            #日常任务 沃之树
+            dwotree.woTree_task()
+            #日常任务 签到
+            dwsignin.daySign_task(user['username'])
+            
+            
+           
         if ('email' in user) :
             notify.sendEmail(user['email'])
         if ('dingtalkWebhook' in user) :

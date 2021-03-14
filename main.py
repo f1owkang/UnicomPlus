@@ -2,6 +2,7 @@ import requests,json,time,re,login,logging,traceback,os,random,notify,datetime
 
 import daily-wotree as dwotree
 import daily-signin as dsignin
+import daily-oneg as doneg
 
 #用户登录全局变量
 client = None
@@ -35,6 +36,8 @@ def main(event, context):
             dwotree.woTree_task()
             #日常任务 签到
             dwsignin.daySign_task(user['username'])
+            #日常任务 一天1g
+            doneg.dayOneG_Task()
             
             
            

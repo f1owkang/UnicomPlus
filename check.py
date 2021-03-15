@@ -5,6 +5,7 @@
 
 import socket
 import requests
+import platform
 
 #UDP 协议来实现的，生成一个UDP包，把自己的 IP 放如到 UDP 协议头中，然后从UDP包中获取本机的IP，经常调用比较耗时！
 
@@ -27,4 +28,13 @@ def getcountry():
     strpp=response.json()    #把英文网站json接口返回值传给字典strpp
     country = strpp.get('country')
     return country
+    
+def system():
+if(platform.system()=='Windows'):
+    return 'windows'
+elseif(platform.system()=='Linux'):
+    return 'linux'
+else:
+    return 'other'
+
    

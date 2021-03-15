@@ -36,6 +36,7 @@ def main(event, context):
     ip = check.getip()
     country = check.getcountry()
     logging.info('【自检】: ' + str(ip) +'（'+ str(country) +'）')
+    logging.info('【自检】: 当前运行系统' + check.system())
     if str(country)=='none':
         logging.info('【自检】:您的地址异常，但本版本未做限制，通过！ ')
     users = readJson()

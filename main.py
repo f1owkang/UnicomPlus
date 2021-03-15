@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import login
 import requests
 import json
@@ -38,19 +39,14 @@ def main(event, context):
         global client
         client = login.login(user['username'],user['password'],user['appId'])
         if client != False:
-        
             #日常任务 沃之树
-            Dwotree.woTree_task()
+            Dwotree.woTree_task(client)
             #日常任务 签到
-            Dsignin.daySign_task(user['username'])
+            Dsignin.daySign_task(client,user['username'])
             #日常任务 一天1g
-            Doneg.dayOneG_Task()
+            Doneg.dayOneG_Task(client)
             #日常任务 天天抽奖
-            Dluck.luckDraw_task()
-            
-            
-            
-           
+            Dluck.luckDraw_task(client)
         if ('email' in user) :
             notify.sendEmail(user['email'])
         if ('dingtalkWebhook' in user) :

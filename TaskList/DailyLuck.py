@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 
 import requests
+import logging
+import traceback
 
 #获取 encrymobile，用于抽奖
-def get_encryptmobile():
+def get_encryptmobile(client):
     page = client.post('https://m.client.10010.com/dailylottery/static/textdl/userLogin')
     page.encoding='utf-8'
     match = re.search('encryptmobile=\w+',page.text,flags=0)
@@ -12,7 +14,7 @@ def get_encryptmobile():
 
 #天天抽奖
 #我的 --> 我的金币 --> 天天抽好礼
-def luckDraw_task():
+def luckDraw_task(client):
     try:
         numjsp = get_encryptmobile()
         #加上这一堆，看中奖率会不会高点

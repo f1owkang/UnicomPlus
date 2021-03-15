@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 import requests
+import traceback
+import logging
+
 
 #获取沃之树首页，得到领流量的目标值
-def get_woTree_glowList():
+def get_woTree_glowList(client):
     index = client.post('https://m.client.10010.com/mactivity/arbordayJson/index.htm')
     index.encoding='utf-8'
     res = index.json()
@@ -10,10 +13,10 @@ def get_woTree_glowList():
 
 #沃之树任务
 #位置: 首页 --> 游戏 --> 沃之树
-def woTree_task():
+def woTree_task(client):
     #领取4M流量*3
     try:
-        flowList = get_woTree_glowList()
+        flowList = get_woTree_glowList(client)
         num = 1
         for flow in flowList:
             takeFlow = client.get('https://m.client.10010.com/mactivity/flowData/takeFlow.htm?flowId=' + flow['id'])

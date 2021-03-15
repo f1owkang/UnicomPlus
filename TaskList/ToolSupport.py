@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import requests
-
+import logging
+import traceback
 import pytz
 from lxml.html import fromstring
 

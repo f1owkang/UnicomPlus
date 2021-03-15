@@ -2,6 +2,7 @@
 import requests
 import traceback
 import logging
+import time
 
 #经多次测试，都可加倍成功了
 #每日签到，1积分 +4 积分(翻倍)，第七天得到 1G 日包

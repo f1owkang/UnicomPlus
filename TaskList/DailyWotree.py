@@ -2,6 +2,7 @@
 import requests
 import traceback
 import logging
+import time
 
 
 #获取沃之树首页，得到领流量的目标值

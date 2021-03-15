@@ -3,6 +3,7 @@
 import requests
 import logging
 import traceback
+import time
 
 #获取 encrymobile，用于抽奖
 def get_encryptmobile(client):

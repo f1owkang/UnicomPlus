@@ -7,13 +7,8 @@ import traceback
 import notify
 import check
 
-import TaskList.DailyWotree as Dwotree
-import TaskList.DailySignin as Dsignin
-import TaskList.DailyOneg as Doneg
-import TaskList.DailyLuck as Dluck
-import TaskList.DailyPoints as Dpoints
-import TaskList.DailyPointsluck as Dpointsluck
-import TaskList.ToolSupport as Tsupport
+#引入任务模块
+from TaskList import *
 
 #用户登录全局变量
 client = None
@@ -47,17 +42,31 @@ def main(event, context):
         open('./log.txt',mode='w',encoding='utf-8')
         global client
         client = login.login(user['username'],user['password'],user['appId'])
+        username = user['username']
+        lotteryNum = user['lotteryNum']
         if client != False:
             #日常任务 沃之树
-            Dwotree.woTree_task(client)
+            DailyWotree.woTree_task(client)
             #日常任务 签到
-            Dsignin.daySign_task(client,user['username'])
+            DailySignin.daySign_task(client,user['username'])
             #日常任务 一天1g
-            Doneg.dayOneG_Task(client)
+            DailyOneG.dayOneG_Task(client)
             #日常任务 天天抽奖
-            Dluck.luckDraw_task(client)
+            DailyLuck.luckDraw_task(client)
+            #日常任务 240M流量
+            DailyCollectflow.collectFlow_task(client)
+            #日常任务 游戏中心打卡
+            DailyGamecenter.gameCenterSign_Task(client,username)
+            #日常任务 开宝箱每天100M
+            DailyOpenbox.openBox_task(client)
+            #日常任务 100定向积分
+            DailyPoints.day100Integral_task(client)
+            #日常任务 定向积分抽奖
+            DailyPointsluck.pointsLottery_task(client,lotteryNum)
+            #限时任务 冬奥定向积分
+            ShortOlympic.dongaoPoints_task(client)
             #工具类
-            Tsupport.getIntegral(client)
+            ToolSupport.getIntegral(client)
         if ('email' in user) :
             notify.sendEmail(user['email'])
         if ('dingtalkWebhook' in user) :

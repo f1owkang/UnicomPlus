@@ -5,8 +5,8 @@ import logging
 import time
 
 
-    #每日1G流量日包领取
-    #位置: 签到 --> 免费领 -->  免费领流量
+#每日1G流量日包领取
+#位置: 签到 --> 免费领 -->  免费领流量
 def dayOneG_Task(client):
         try:
             #观看视频任务

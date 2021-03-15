@@ -56,17 +56,25 @@ def main(event, context):
             #日常任务 240M流量
             DailyCollectflow.collectFlow_task(client)
             #日常任务 游戏中心打卡
-            DailyGamecenter.gameCenterSign_Task(client,username)
-            #日常任务 开宝箱每天100M
-            DailyOpenbox.openBox_task(client)
+            if ToolSupport.check():
+                  DailyGamecenter.gameCenterSign_Task(client,user['username'])
+                  #日常任务 开宝箱每天100M
+                  DailyOpenbox.openBox_task(client)
+            
             #日常任务 100定向积分
             DailyPoints.day100Integral_task(client)
             #日常任务 定向积分抽奖
-            DailyPointsluck.pointsLottery_task(client,lotteryNum)
+            if ('lotteryNum' in user):
+                DailyPointsluck.pointsLottery_task(client,lotteryNum)
+            else:
+                DailyPointsluck.pointsLottery_task(client,0)
+            
             #限时任务 冬奥定向积分
             ShortOlympic.dongaoPoints_task(client)
             #工具类
             ToolSupport.getIntegral(client)
+            #自动激活即将过期流量包
+            ToolSupport.actionFlow(client,user['username'])
         if ('email' in user) :
             notify.sendEmail(user['email'])
         if ('dingtalkWebhook' in user) :

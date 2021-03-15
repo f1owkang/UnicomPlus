@@ -2,6 +2,7 @@
 import requests
 import logging
 import traceback
+import time
 
 #领取 4G 流量包任务，看视频、下载软件每日可获得 240M 流量
 #位置: 我的 --> 我的金币 --> 4G流量包

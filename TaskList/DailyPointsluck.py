@@ -1,14 +1,23 @@
 # -*- coding: utf-8 -*-
-import request
+import requests
 import logging
 import traceback
+import re
+import time
 
 #积分抽奖，可在环境变量中设置抽奖次数，否则每天将只会抽奖一次
 #需要注意的是，配置完抽奖次数，程序每运行一次都将触发积分抽奖，直至达每日30次抽奖用完或积分不够(测试过程中未中过奖)
 #位置: 发现 --> 定向积分 --> 小积分，抽好礼
+def get_encryptmobile(client):
+    page = client.post('https://m.client.10010.com/dailylottery/static/textdl/userLogin')
+    page.encoding='utf-8'
+    match = re.search('encryptmobile=\w+',page.text,flags=0)
+    usernumber = match.group(0)[14:]
+    return usernumber
+
 def pointsLottery_task(client,n):
     try:
-        numjsp = get_encryptmobile()
+        numjsp = get_encryptmobile(client)
         #每日首次免费
         oneFree = client.post('https://m.client.10010.com/dailylottery/static/integral/choujiang?usernumberofjsp=' + numjsp)
         oneFree.encoding = 'utf-8'

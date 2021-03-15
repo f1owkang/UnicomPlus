@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
-import request
+import requests
 import logging
 import traceback
+import random
+import time
 
 #每日领取100定向积分
 #位置: 发现 --> 定向积分 --> 领取定向积分兑爆款

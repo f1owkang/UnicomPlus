@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 import request
-
+import logging
+import traceback
 
 #积分抽奖，可在环境变量中设置抽奖次数，否则每天将只会抽奖一次
 #需要注意的是，配置完抽奖次数，程序每运行一次都将触发积分抽奖，直至达每日30次抽奖用完或积分不够(测试过程中未中过奖)
 #位置: 发现 --> 定向积分 --> 小积分，抽好礼
-def pointsLottery_task(n):
+def pointsLottery_task(client,n):
     try:
         numjsp = get_encryptmobile()
         #每日首次免费

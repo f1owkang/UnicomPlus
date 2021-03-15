@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import requests
+import logging
+import traceback
 
 #游戏任务中心每日打卡领积分，游戏任务自然数递增至7，游戏频道每日1积分
 #位置: 首页 --> 游戏 --> 每日打卡
-def gameCenterSign_Task(username):
+def gameCenterSign_Task(client,username):
     data1 = {
         'methodType': 'signin',
         'clientVersion': '8.0100',

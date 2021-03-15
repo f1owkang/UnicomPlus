@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import requests
+import logging
+import traceback
 
 #开宝箱，赢话费任务 100M 流量
 #位置: 首页 --> 游戏 --> 每日打卡 --> 宝箱任务
-def openBox_task():
+def openBox_task(client):
     client.headers.update({'referer': 'https://img.client.10010.com'})
     client.headers.update({'origin': 'https://img.client.10010.com'})
     data1 = {

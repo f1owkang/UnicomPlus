@@ -11,6 +11,8 @@ import TaskList.DailyWotree as Dwotree
 import TaskList.DailySignin as Dsignin
 import TaskList.DailyOneg as Doneg
 import TaskList.DailyLuck as Dluck
+import TaskList.DailyPoints as Dpoints
+import TaskList.DailyPointsluck as Dpointsluck
 import TaskList.ToolSupport as Tsupport
 
 #用户登录全局变量
@@ -54,6 +56,8 @@ def main(event, context):
             Doneg.dayOneG_Task(client)
             #日常任务 天天抽奖
             Dluck.luckDraw_task(client)
+            #工具类
+            Tsupport.getIntegral(client)
         if ('email' in user) :
             notify.sendEmail(user['email'])
         if ('dingtalkWebhook' in user) :

@@ -1,12 +1,53 @@
 # -*- coding: utf-8 -*-
 
 import requests
-import lxml
+
 import pytz
+from lxml.html import fromstring
+
+
+#防刷校验
+def check(client):
+    client.headers.update({'referer': 'https://img.client.10010.com'})
+    client.headers.update({'origin': 'https://img.client.10010.com'})
+    data4 = {
+        'methodType': 'queryTaskCenter',
+        'taskCenterId': '',
+        'videoIntegral': '',
+        'isVideo': '',
+        'clientVersion': '8.0100',
+        'deviceType': 'Android'
+    }
+    #在此之间验证是否有防刷校验
+    taskCenter = client.post('https://m.client.10010.com/producGameTaskCenter', data=data4)
+    taskCenter.encoding = 'utf-8'
+    taskCenters = taskCenter.json()
+    gameId = ''
+    for t in taskCenters['data']:
+        if t['task_title'] == '宝箱任务':
+            gameId = t['game_id']
+            break
+    data5 = {
+        'userNumber': 'queryTaskCenter',
+        'methodType': 'flowGet',
+        'gameId': gameId,
+        'clientVersion': '8.0100',
+        'deviceType': 'Android'
+    }
+    producGameApp = client.post('https://m.client.10010.com/producGameApp',data=data5)
+    producGameApp.encoding = 'utf-8'
+    res = producGameApp.json()
+    client.headers.pop('referer')
+    client.headers.pop('origin')
+    if res['code'] == '9999':
+        return True
+    else:
+        logging.info('【娱乐中心任务】: 触发防刷，跳过')
+        return False
 
 #获取积分余额
 #分类：奖励积分、定向积分、通信积分
-def getIntegral():
+def getIntegral(client):
     try:
         integral = client.post('https://m.client.10010.com/welfare-mall-front/mobile/show/bj2205/v2/Y')
         integral.encoding = 'utf-8'
@@ -21,7 +62,7 @@ def getIntegral():
         logging.error('【积分余额】: 错误，原因为: ' + str(e))
 
 #获得我的礼包页面对象
-def getQuerywinning(username):
+def getQuerywinning(client,username):
     #获得我的礼包页面
     querywinninglist = client.get(
         'http://m.client.10010.com/myPrizeForActivity/querywinninglist.htm?yw_code=&desmobile='+str(username)+'&version=android@8.0100')
@@ -33,9 +74,9 @@ def getQuerywinning(username):
     return html
 
 #存储并返回未使用的流量包
-def getStorageFlow(username):
+def getStorageFlow(clinet,username):
     #获得我的礼包页面
-    html = getQuerywinning(username)
+    html = getQuerywinning(client,username)
     #寻找ul下的所有li，在未使用流量包栏页面
     ul = html.xpath('/html/body/div[1]/div[7]/ul/li')
     #存储流量包数据
@@ -67,11 +108,11 @@ def getTimezone():
     return timeStamp
 
 #获得流量包的还剩多长时间结束，返回形式时间戳
-def getflowEndTime(username):
+def getflowEndTime(client,username):
     #获得中国时间戳
     now = getTimezone()
     #获得我的礼包页面对象
-    html = getQuerywinning(username)
+    html = getQuerywinning(client,username)
     #获得流量包到期的时间戳
     endStamp = []
     endTime = html.xpath('/html/body/div[1]/div[7]/ul/li[*]/div[2]/p[3]')
@@ -95,11 +136,11 @@ def getflowEndTime(username):
     return endStamp
 
 #激活即将过期的流量包
-def actionFlow(username):
+def actionFlow(client,username):
     #获得所有未使用的流量包
-    datas = getStorageFlow(username)
+    datas = getStorageFlow(client,username)
     #获得流量包还剩多长时间到期时间戳
-    endTime = getflowEndTime(username)
+    endTime = getflowEndTime(cliemt,username)
     #流量包下标
     i = 0
     flag = True

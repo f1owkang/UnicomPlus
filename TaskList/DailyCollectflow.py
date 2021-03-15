@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 import requests
+import logging
+import traceback
 
 #领取 4G 流量包任务，看视频、下载软件每日可获得 240M 流量
 #位置: 我的 --> 我的金币 --> 4G流量包
-def collectFlow_task():
+def collectFlow_task(client):
     data1 = {
         'stepflag': '22'
     }

@@ -35,7 +35,9 @@ def readJson():
 def main(event, context):
     ip = check.getip()
     country = check.getcountry()
-    logging.info('【环境检查】: ' + str(ip) +'（'+ str(country) +'）')
+    logging.info('【自检】: ' + str(ip) +'（'+ str(country) +'）')
+    if str(country)=='none':
+        logging.info('【自检】:您的地址异常，但本版本未做限制，通过！ ')
     users = readJson()
     for user in users:
         #清空上一个用户的日志记录

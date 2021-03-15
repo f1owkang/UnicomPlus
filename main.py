@@ -7,6 +7,8 @@ import notify
 import TaskList.DailyWotree as Dwotree
 import TaskList.DailySignin as Dsignin
 import TaskList.DailyOneg as Doneg
+import TaskList.DailyLuck as Dluck
+import TaskList.ToolSupport as Tsupport
 
 #用户登录全局变量
 client = None
@@ -42,6 +44,9 @@ def main(event, context):
             Dsignin.daySign_task(user['username'])
             #日常任务 一天1g
             Doneg.dayOneG_Task()
+            #日常任务 天天抽奖
+            Dluck.luckDraw_task()
+            
             
             
            

@@ -4,6 +4,7 @@
 # @Email   : lxdebug@foxmail.com
 
 import socket
+import requests
 
 #UDP 协议来实现的，生成一个UDP包，把自己的 IP 放如到 UDP 协议头中，然后从UDP包中获取本机的IP，经常调用比较耗时！
 

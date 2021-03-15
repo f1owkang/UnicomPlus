@@ -43,9 +43,9 @@ def main(event, context):
         client = login.login(user['username'],user['password'],user['appId'])
         username = user['username']
         if ('lotteryNum' in user):
-                lotteryNum = user['lotteryNum']
-            else:
-                lotteryNum = 0
+            lotteryNum = user['lotteryNum']
+        else:
+            lotteryNum = 0
         if client != False:
             tasks.run(client,username,lotteryNum)
         if ('email' in user) :

@@ -30,12 +30,18 @@ def readJson():
 
 
 def main(event, context):
+<<<<<<< HEAD
     ipinfo = requests.get('http://ip-api.com/json/').text
     ip = json.loads(ipinfo).get('query')
     country = json.loads(ipinfo).get('country')
     logging.info('【自检】: ' + str(ip) +'（'+ str(country) +'）')
+=======
+    ip = check.getip()
+    country = check.getcountry()
+    logging.info('【自检】: ' + ip +'（'+ country +'）')
+>>>>>>> 9ac0d4c8e8350ff741df8cf1b5aacfe93430c442
     logging.info('【自检】: 当前运行系统' + check.system())
-    if str(country)=='None':
+    if str(country)!='中国':
         logging.info('【自检】:您的地址异常，但本版本未做限制，通过！ ')
     users = readJson()
     for user in users:
@@ -46,7 +52,39 @@ def main(event, context):
         username = user['username']
         lotteryNum = user['lotteryNum']
         if client != False:
+<<<<<<< HEAD
             tasks.run(client,username,lotteryNum)
+=======
+            #日常任务 沃之树
+            DailyWotree.woTree_task(client)
+            #日常任务 签到
+            DailySignin.daySign_task(client,user['username'])
+            #日常任务 一天1g
+            DailyOneG.dayOneG_Task(client)
+            #日常任务 天天抽奖
+            DailyLuck.luckDraw_task(client)
+            #日常任务 240M流量
+            DailyCollectflow.collectFlow_task(client)
+            #日常任务 游戏中心打卡
+            if ToolSupport.check():
+                  DailyGamecenter.gameCenterSign_Task(client,user['username'])
+                  #日常任务 开宝箱每天100M
+                  DailyOpenbox.openBox_task(client)
+            
+            #日常任务 100定向积分
+            DailyPoints.day100Integral_task(client)
+            #日常任务 定向积分抽奖
+            if ('lotteryNum' in user):
+                DailyPointsluck.pointsLottery_task(client,lotteryNum)
+            else:
+                DailyPointsluck.pointsLottery_task(client,0)
+            #限时任务 冬奥定向积分
+            ShortOlympic.dongaoPoints_task(client)
+            #工具类
+            ToolSupport.getIntegral(client)
+            #自动激活即将过期流量包
+            ToolSupport.actionFlow(client,user['username'])
+>>>>>>> 9ac0d4c8e8350ff741df8cf1b5aacfe93430c442
         if ('email' in user) :
             notify.sendEmail(user['email'])
         if ('dingtalkWebhook' in user) :

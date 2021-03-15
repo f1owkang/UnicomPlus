@@ -76,7 +76,7 @@ def getQuerywinning(client,username):
     return html
 
 #存储并返回未使用的流量包
-def getStorageFlow(clinet,username):
+def getStorageFlow(client,username):
     #获得我的礼包页面
     html = getQuerywinning(client,username)
     #寻找ul下的所有li，在未使用流量包栏页面
@@ -142,7 +142,7 @@ def actionFlow(client,username):
     #获得所有未使用的流量包
     datas = getStorageFlow(client,username)
     #获得流量包还剩多长时间到期时间戳
-    endTime = getflowEndTime(cliemt,username)
+    endTime = getflowEndTime(client,username)
     #流量包下标
     i = 0
     flag = True

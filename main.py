@@ -32,9 +32,9 @@ def readJson():
 def main(event, context):
     ip = check.getip()
     country = check.getcountry()
-    logging.info('【自检】: ' + str(ip) +'（'+ str(country) +'）')
+    logging.info('【自检】: ' + ip +'（'+ country +'）')
     logging.info('【自检】: 当前运行系统' + check.system())
-    if str(country)=='None':
+    if str(country)!='中国':
         logging.info('【自检】:您的地址异常，但本版本未做限制，通过！ ')
     users = readJson()
     for user in users:
@@ -68,7 +68,6 @@ def main(event, context):
                 DailyPointsluck.pointsLottery_task(client,lotteryNum)
             else:
                 DailyPointsluck.pointsLottery_task(client,0)
-            
             #限时任务 冬奥定向积分
             ShortOlympic.dongaoPoints_task(client)
             #工具类

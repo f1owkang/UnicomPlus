@@ -32,7 +32,7 @@ def getcountry():
 def system():
     if(platform.system()=='Windows'):
         return 'windows'
-    elseif(platform.system()=='Linux'):
+    elif(platform.system()=='Linux'):
         return 'linux'
     else:
         return 'other'

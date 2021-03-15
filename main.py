@@ -35,7 +35,7 @@ def main(event, context):
     country = json.loads(ipinfo).get('country')
     logging.info('【自检】: ' + str(ip) +'（'+ str(country) +'）')
     logging.info('【自检】: 当前运行系统' + check.system())
-    if str(country)!='中国':
+    if str(country)!='China':
         logging.info('【自检】:您的地址异常，但本版本未做限制，通过！ ')
     users = readJson()
     for user in users:

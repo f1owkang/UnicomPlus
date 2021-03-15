@@ -3,6 +3,7 @@
 import requests
 import logging
 import traceback
+import time
 import pytz
 from lxml.html import fromstring
 

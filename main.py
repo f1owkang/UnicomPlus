@@ -30,9 +30,7 @@ def readJson():
 
 
 def main(event, context):
-    ipinfo = requests.get('http://ip-api.com/json/').text
-    ip = json.loads(ipinfo).get('query')
-    country = json.loads(ipinfo).get('country')
+    ip,country=check.getnetinfo()
     logging.info('【自检】: ' + str(ip) +'（'+ str(country) +'）')
     logging.info('【自检】: 当前运行系统' + check.system())
     if str(country)!='中国':

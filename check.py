@@ -5,25 +5,17 @@
 
 import requests
 import platform
-import re
+import json
 
 #正则表达式
 
-def getip(): 
-    html_text = requests.get("https://myip.ipip.net").text
-# （1）正则匹配方式 ip
-    ip_text = re.match「match」
-- - - - - - - - - - - - - - -
-("(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)\.(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)", html_text) 
-    return ip_text.group(1)
-    
-def getcountry():
-    html_text = requests.get("https://myip.ipip.net").text
-# （2）正则匹配方式 汉字
-    country_text = re.match("[\u4e00-\u9fa5]", html_text) 
-    country = country_text.group(6)+country_text.group(7)
-    return country
-    
+
+def getnetinfo(): 
+    ipinfo = requests.get('http://ip-api.com/json/').text
+    ip = json.loads(ipinfo).get('query')
+    country = json.loads(ipinfo).get('country')
+    return ip,country
+
 def system():
     if(platform.system()=='Windows'):
         return 'windows'

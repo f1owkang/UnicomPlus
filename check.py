@@ -25,6 +25,6 @@ def getcountry():
     response = requests.get(url)
     strpp={}                  #定义一个字典strpp   
     strpp=response.json()    #把英文网站json接口返回值传给字典strpp
-    country = strpp.get('country'))
+    country = strpp.get('country')
     return country
    

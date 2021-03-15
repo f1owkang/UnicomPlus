@@ -17,7 +17,7 @@ def get_encryptmobile(client):
 #我的 --> 我的金币 --> 天天抽好礼
 def luckDraw_task(client):
     try:
-        numjsp = get_encryptmobile()
+        numjsp = get_encryptmobile(client)
         #加上这一堆，看中奖率会不会高点
         client.post('https://m.client.10010.com/mobileservicequery/customerService/share/defaultShare.htm')
         client.get('https://m.client.10010.com/dailylottery/static/doubleball/firstpage?encryptmobile=' + numjsp)

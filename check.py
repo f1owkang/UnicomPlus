@@ -11,7 +11,7 @@ import json
 
 
 def getnetinfo(): 
-    ipinfo = requests.get('http://ip-api.com/json/').text
+    netinfo = requests.get('http://ip-api.com/json/').text
     ip = json.loads(ipinfo).get('query')
     country = json.loads(ipinfo).get('country')
     return ip,country

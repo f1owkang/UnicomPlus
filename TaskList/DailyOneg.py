@@ -1,10 +1,10 @@
-    # -*- coding: utf-8 -*-
-    import requests
+# -*- coding: utf-8 -*-
+import requests
 
 
     #每日1G流量日包领取
     #位置: 签到 --> 免费领 -->  免费领流量
-    def dayOneG_Task():
+def dayOneG_Task():
         try:
             #观看视频任务
             client.post('https://act.10010.com/SigninApp/doTask/finishVideo')

@@ -30,11 +30,11 @@ def getcountry():
     return country
     
 def system():
-if(platform.system()=='Windows'):
-    return 'windows'
-elseif(platform.system()=='Linux'):
-    return 'linux'
-else:
-    return 'other'
+    if(platform.system()=='Windows'):
+        return 'windows'
+    elif(platform.system()=='Linux'):
+        return 'linux'
+    else:
+        return 'other'
 
    

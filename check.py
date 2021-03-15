@@ -19,9 +19,7 @@ def getcountry():
     html_text = requests.get("https://myip.ipip.net").text
 # （2）正则匹配方式 汉字
     country_text = re.search(u"[\u4e00-\u9fa5]", html_text) 
-    re1=str(country_text(6))
-    re2=str(country_text(7))
-    country = re1+re2
+    country = country_text.group(6)+country_text.group(7)
     return country
     
 def system():

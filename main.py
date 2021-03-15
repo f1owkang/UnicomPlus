@@ -1,8 +1,12 @@
-import requests,json,time,re,login,logging,traceback,os,random,notify,datetime
+import login
+import requests
+import logging
+import traceback
+import notify
 
-import daily-wotree as dwotree
-import daily-signin as dsignin
-import daily-oneg as doneg
+import TaskList.DailyWotree as Dwotree
+import TaskList.DailySignin as Dsignin
+import TaskList.DailyOneg as Doneg
 
 #用户登录全局变量
 client = None
@@ -33,11 +37,11 @@ def main(event, context):
         if client != False:
         
             #日常任务 沃之树
-            dwotree.woTree_task()
+            Dwotree.woTree_task()
             #日常任务 签到
-            dwsignin.daySign_task(user['username'])
+            Dsignin.daySign_task(user['username'])
             #日常任务 一天1g
-            doneg.dayOneG_Task()
+            Doneg.dayOneG_Task()
             
             
            

@@ -7,10 +7,10 @@ import time
 
 def listdir(path, list_name): 
   for file in os.listdir(path): 
-    if os.path.isdir(file_path): 
-      listdir(file_path, list_name) 
-    elif os.path.splitext(file_path)[1]=='.py': 
-      list_name.append(os.path.splitext(file_path)[0])
+    if os.path.isdir(file): 
+      listdir(file, list_name) 
+    elif os.path.splitext(file)[1]=='.py': 
+      list_name.append(os.path.splitext(file)[0])
       #list_name.append(file_path) 
 
 def runscheduler(client,username,num):

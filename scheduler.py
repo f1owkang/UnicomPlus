@@ -55,7 +55,7 @@ def resetJson(file_old,file_new,num):
     for f11 in L:
         with open(f11,'rw') as f:
             data = json.load(f)
-            data[0]['TaskNum'] = num
+            data[0]['taskNum'] = num
             newpath = os.path.join(file_new,os.path.split(f11)[1])
             with open(newpath,'w') as f2:
                 json.dump(data,f2)       # 写入f2文件到本地

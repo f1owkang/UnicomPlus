@@ -37,7 +37,7 @@ def runscheduler(client,username,num):
             logging.info('【任务分配】: ' + task)
             i = importlib.import_module('TaskList.'+task)
             i.main(client,username,num)
-            resetJson('./','./',int(taskNum) + 1)
+            resetJson('.','.',int(taskNum) + 1)
             forNum = forNum + 1
             dtime =random.randint(3,30)
             logging.info('【任务调度】: 延时进行' + str(dtime)+'秒')

@@ -50,7 +50,7 @@ def resetJson(file_old,file_new,num):
     filename_rest = os.listdir(file_old)  # 获取需要读取的文件的名字
     L = []
     for rest in filename_rest:
-        if os.apth.splitext(rest)[1]='.json':
+        if os.apth.splitext(rest)[1]=='.json':
             L.append(os.path.join(file_old,rest)) #创建文件路径
     for f11 in L:
         with open(f11,'rw') as f:

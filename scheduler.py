@@ -20,8 +20,8 @@ def runscheduler(client,username,num):
     listdir('./TaskList',tasklist)
     logging.info('【任务调度】: 当前任务数量' + str(len(tasklist))
     for task in iter(tasklist):
-      i = importlib.import_module('.TaskList',package=task)
-      i.main(client=client,username=username,n=num)
+      #i = importlib.import_module('.TaskList',package=task)
+      #i.main(client=client,username=username,n=num)
       dtime =random.randint(30,300)
       logging.info('【任务调度】: 
 延时进行' + str(dtime)+'秒')

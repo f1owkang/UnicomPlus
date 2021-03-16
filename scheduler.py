@@ -26,19 +26,3 @@ def runscheduler(client,username,num):
       #dtime =random.randint(30,300)
       #logging.info('【任务调度】: 延时进行' + str(dtime)+'秒')
       #time.sleep(dtime)
-    
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-

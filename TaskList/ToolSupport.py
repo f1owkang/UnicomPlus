@@ -8,7 +8,7 @@ import pytz
 from lxml.html import fromstring
 
 
-def mian(*i)
+def mian(*i):
     client = i[0]
     username= i[1]
     getIntegral(client)

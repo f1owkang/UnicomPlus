@@ -26,18 +26,18 @@ def runscheduler(client,username,num):
     for task in tasklist:
       logging.info('【任务分配】: 循环次数' + str(forNum))
       user = main.readJson()
-      logging.info('【测试】: ' + str(user['taskNum']))
+      logging.info('【测试】: ' + user['taskNum'])
       if ('taskNum' in user):
             taskNum = user['taskNum']
       else:
             logging.error('Json未配置taskNum，停止运行')
             sys.exit()
       logging.info('【任务统计】: 已进行' + taskNum +'个任务')
-      if forNum >= taskNum:
+      if forNum >= int(taskNum):
             logging.info('【任务分配】: ' + task)
             i = importlib.import_module('TaskList.'+task)
             i.main(client,username,num)
-            resetJson('./','./',taskNum + 1)
+            resetJson('./','./',int(taskNum) + 1)
             forNum = forNum + 1
             dtime =random.randint(3,30)
             logging.info('【任务调度】: 延时进行' + str(dtime)+'秒')
@@ -57,7 +57,7 @@ def resetJson(file_old,file_new,num):
     for f11 in L:
         with open(f11,'rw') as f:
             data = json.load(f)
-            data[0]['taskNum'] = num
+            data[0]['taskNum'] = str(num)
             newpath = os.path.join(file_new,os.path.split(f11)[1])
             with open(newpath,'w') as f2:
                 json.dump(data,f2)       # 写入f2文件到本地

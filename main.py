@@ -6,6 +6,7 @@ import logging
 import traceback
 import notify
 import check
+import sys
 
 #引入任务模块
 import scheduler
@@ -49,6 +50,9 @@ def main(event, context):
         #任务调度代码
         if client != False:
             scheduler.runscheduler(client,username,lotteryNum)
+        else:
+            logging.error('发生登陆错误，退出')
+            sys.exit()
         scheduler.resetJson('./','./',0)
         if ('email' in user) :
             notify.sendEmail(user['email'])

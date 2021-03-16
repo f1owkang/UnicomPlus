@@ -8,7 +8,7 @@ import notify
 import check
 
 #引入任务模块
-import TaskList.tasks as tasks
+import scheduler
 
 #用户登录全局变量
 client = None
@@ -46,8 +46,14 @@ def main(event, context):
             lotteryNum = user['lotteryNum']
         else:
             lotteryNum = 0
+        #任务调度代码
         if client != False:
-            tasks.run(client,username,lotteryNum)
+            scheduler.runscheduler(client,username,lotteryNum)
+            
+            
+            
+            
+            
         if ('email' in user) :
             notify.sendEmail(user['email'])
         if ('dingtalkWebhook' in user) :

@@ -7,7 +7,7 @@ import time
 
 #冬奥积分活动，第1和7天，可领取600定向积分，其余领取300定向积分,有效期至下月底
 #位置: 发现 --> 定向积分 --> 每日领积分超值兑东奥特许商品
-def dongaoPoints_task(client):
+def main(client):
     data = {
         'from': random.choice('123456789') + ''.join(random.choice('0123456789') for i in range(10))
     }

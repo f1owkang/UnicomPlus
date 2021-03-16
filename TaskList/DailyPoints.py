@@ -7,7 +7,7 @@ import time
 
 #每日领取100定向积分
 #位置: 发现 --> 定向积分 --> 领取定向积分兑爆款
-def day100Integral_task(client):
+def main(client):
     data = {
         'from': random.choice('123456789') + ''.join(random.choice('0123456789') for i in range(10))
     }

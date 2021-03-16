@@ -15,7 +15,7 @@ def get_encryptmobile(client):
     usernumber = match.group(0)[14:]
     return usernumber
 
-def pointsLottery_task(client,n):
+def main(client,n):
     try:
         numjsp = get_encryptmobile(client)
         #每日首次免费

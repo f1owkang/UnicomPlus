@@ -6,7 +6,7 @@ import time
 
 
 #获取沃之树首页，得到领流量的目标值
-def get_woTree_glowList(client):
+def main(client):
     index = client.post('https://m.client.10010.com/mactivity/arbordayJson/index.htm')
     index.encoding='utf-8'
     res = index.json()

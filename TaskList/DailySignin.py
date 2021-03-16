@@ -7,7 +7,7 @@ import time
 #经多次测试，都可加倍成功了
 #每日签到，1积分 +4 积分(翻倍)，第七天得到 1G 日包
 #位置: 我的 --> 我的金币
-def daySign_task(client,username):
+def main(client,username):
     try:
         #参考同类项目 HiCnUnicom 待明日验证是否能加倍成功
         client.headers.update({'referer': 'https://img.client.10010.com/activitys/member/index.html'})

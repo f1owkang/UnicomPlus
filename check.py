@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2021/3/15
-# @Author  : lxdebug
+# @Author  : lxdebug,hyzaw
 # @Email   : lxdebug@foxmail.com
 
 import requests
 import platform
 import json
-
-#正则表达式
 
 
 def getnetinfo(): 

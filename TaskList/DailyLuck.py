@@ -16,7 +16,7 @@ def get_encryptmobile(client):
 
 #天天抽奖
 #我的 --> 我的金币 --> 天天抽好礼
-def luckDraw_task(client):
+def main(client):
     try:
         numjsp = get_encryptmobile(client)
         #加上这一堆，看中奖率会不会高点

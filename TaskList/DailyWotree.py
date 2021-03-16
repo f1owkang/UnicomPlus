@@ -6,7 +6,8 @@ import time
 
 
 #获取沃之树首页，得到领流量的目标值
-def main(client):
+def main(*i):
+    client = i[0]
     index = client.post('https://m.client.10010.com/mactivity/arbordayJson/index.htm')
     index.encoding='utf-8'
     res = index.json()

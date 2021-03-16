@@ -15,7 +15,9 @@ def get_encryptmobile(client):
     usernumber = match.group(0)[14:]
     return usernumber
 
-def main(client,n):
+def main(*i):
+    client = i[0]
+    n = i[2]
     try:
         numjsp = get_encryptmobile(client)
         #每日首次免费

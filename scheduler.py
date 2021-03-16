@@ -5,6 +5,7 @@ import importlib
 import random
 import time
 
+#获取任务列表
 def listdir(path, list_name): 
   for file in os.listdir(path): 
     if os.path.isdir(file): 
@@ -19,9 +20,9 @@ def runscheduler(client,username,num):
     listdir('./TaskList',tasklist)
     logging.info('【任务调度】: 当前任务数量' + str(len(tasklist)))
     for task in tasklist:
-      logging.info('【测试】: ' + task)
+      logging.info('【任务分配】: ' + task)
       i = importlib.import_module('TaskList.'+task)
-      i.main(client=client,username=username,n=num)
+      i.main(client,username,num)
       dtime =random.randint(30,300)
       logging.info('【任务调度】: 延时进行' + str(dtime)+'秒')
       time.sleep(dtime)

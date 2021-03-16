@@ -24,4 +24,8 @@ def system():
     else:
         return 'Other'
 
+def cpu():
+    return platform.machine()
+
+
    

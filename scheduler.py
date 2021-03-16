@@ -27,9 +27,6 @@ def runscheduler(client,username,num):
       logging.info('【任务分配】: 循环次数' + str(forNum))
       user = main.readJson()
       logging.info('【测试】: ' + user['taskNum'])
-      if ('lotteryNum' in user):
-        else:
-            lotteryNum = 0
       if ('taskNum' in user):
             taskNum = user['taskNum']
       else:

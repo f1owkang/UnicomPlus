@@ -16,10 +16,12 @@ def getnetinfo():
 
 def system():
     if(platform.system()=='Windows'):
-        return 'windows'
+        return 'Windows'
     elif(platform.system()=='Linux'):
-        return 'linux'
+        return 'Linux'
+    elif (platform.system() == 'Darwin'):
+        return  'Darwin'
     else:
-        return 'other'
+        return 'Other'
 
    

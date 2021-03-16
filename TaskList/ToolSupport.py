@@ -57,7 +57,10 @@ def getIntegral(client):
         for r in res['resdata']['data']:
             #排除掉优惠卷日志
             if r['name'] != '优惠券':
-                logging.info('【'+r['name']+'】: ' + r['number'])
+                try:
+                    logging.info('【'+r['name']+'】: ' + r['number'])
+                except:
+                    logging.info('查询出错')
         time.sleep(1)
     except Exception as e:
         print(traceback.format_exc())

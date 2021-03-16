@@ -25,9 +25,7 @@ def runscheduler(client,username,num):
     logging.info('【任务调度】: 当前任务数量' + str(len(tasklist)))
     forNum = 0
     for task in tasklist:
-      logging.info('【任务分配】: 循环次数' + str(forNum))
       user = main.readJson()
-      logging.info('【测试】: ' + user[0]['taskNum'])
       if ('taskNum' in user[0]):
             taskNum = user[0]['taskNum']
       else:

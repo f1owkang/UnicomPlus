@@ -8,6 +8,11 @@ import pytz
 from lxml.html import fromstring
 
 
+def mian(*i)
+    client = i[0]
+    username= i[1]
+    getIntegral(client)
+
 #防刷校验
 def check(client):
     client.headers.update({'referer': 'https://img.client.10010.com'})
@@ -57,10 +62,7 @@ def getIntegral(client):
         for r in res['resdata']['data']:
             #排除掉优惠卷日志
             if r['name'] != '优惠券':
-                try:
-                    logging.info('【'+r['name']+'】: ' + r['number'])
-                except:
-                    logging.info('查询出错')
+                logging.info('【'+r['name']+'】: ' + r['number'])
         time.sleep(1)
     except Exception as e:
         print(traceback.format_exc())

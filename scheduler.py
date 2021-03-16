@@ -24,9 +24,10 @@ def runscheduler(client,username,num):
     logging.info('【任务调度】: 当前任务数量' + str(len(tasklist)))
     forNum = 0
     for task in tasklist:
+      logging.info('【任务分配】: 循环次数' + str(forNum))
       user = main.readJson()
-      if ('taskNum' in user):
-            taskNum = user['taskNum']
+      if ('tasknum' in user):
+            taskNum = user['tasknum']
       else:
             logging.error('Json未配置taskNum，停止运行')
             sys.exit()
@@ -37,7 +38,7 @@ def runscheduler(client,username,num):
             i.main(client,username,num)
             resetJson('./','./',taskNum + 1)
             forNum = forNum + 1
-            dtime =random.randint(30,300)
+            dtime =random.randint(3,30)
             logging.info('【任务调度】: 延时进行' + str(dtime)+'秒')
             time.sleep(dtime)
       else:

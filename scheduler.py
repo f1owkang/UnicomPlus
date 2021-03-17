@@ -30,7 +30,7 @@ def runscheduler(client,username,num):
       logging.error('Json未配置taskNum，停止运行')
       sys.exit()
     #日期不同重置任务
-    if config() != datetime.datetime.now().month+datetime.datetime.now().day:
+    if configdate() != datetime.datetime.now().month+datetime.datetime.now().day:
       resetJson('./','./',0)
       logging.info('【任务调度】: 日期变更重置任务')
     logging.info('【任务统计】: 已进行' + taskNum +'个任务')

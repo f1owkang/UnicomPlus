@@ -44,9 +44,12 @@ def runscheduler(client,username,num):
             i.main(client,username,num)
             resetJson('./','./',int(taskNum) + 1)
             forNum = forNum + 1
-            dtime =random.randint(3,30)
-            logging.info('【任务调度】: 延时进行' + str(dtime)+'秒')
-            time.sleep(dtime)
+            if forNum < len(tasklist):
+              dtime =random.randint(3,30)
+              logging.info('【任务调度】: 延时进行' + str(dtime)+'秒')
+              time.sleep(dtime)
+            else:
+              logging.info('【任务结束】: 正在尝试发送通知')
       else:
             logging.info('【任务跳过】: ' + task)
             forNum = forNum + 1

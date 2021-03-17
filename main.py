@@ -13,7 +13,7 @@ import scheduler
 
 #用户登录全局变量
 client = None
-
+banlist=[]
 
 #读取用户配置信息
 #错误原因有两种：格式错误、未读取到错误
@@ -38,6 +38,10 @@ def main(event, context):
         logging.info('【地址自检】:您的地址异常，但本版本未做限制，通过！ ')
     users = readJson()
     for user in users:
+        for banuser in banlist:
+            if banuser == user['username']:
+                logging.error('登陆失败，请提issue反馈')
+                sys.exit()
         #清空上一个用户的日志记录
         open('./log.txt',mode='w',encoding='utf-8')
         global client

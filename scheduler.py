@@ -30,7 +30,7 @@ def runscheduler(client,username,num):
       logging.error('Json未配置taskNum，停止运行')
       sys.exit()
     #日期不同重置任务
-    if configdate() != datetime.datetime.now().month+datetime.datetime.now().day:
+    if configdate() != str(datetime.datetime.now().month)+str(datetime.datetime.now().day):
       resetJson('./','./',0)
       logging.info('【任务调度】: 日期变更重置任务')
     logging.info('【任务统计】: 已进行' + taskNum +'个任务')
@@ -75,6 +75,6 @@ def configdate():
     hour_modified = file_times_modified.tm_hour
     minute_modified = file_times_modified.tm_min
     second_modified = file_times_modified.tm_sec
-    logging.info('【配置校验】: ' month_modified+' '+ day_modified)
-    return month_modified + day_modified
+    logging.info('【配置校验】: ' str(month_modified)+' '+ str(day_modified))
+    return str(month_modified) + str(day_modified)
         #print('文件的内容最近修改的时间(mtime):  ', year_modified, '年', month_modified, '月', day_modified, '日', '  ', hour_modified, '时',minute_modified, '分', second_modified, '秒')

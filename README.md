@@ -2,8 +2,8 @@
 * 联通营业厅 活动脚本(python)
 * 由于脚本使用相对路径 需cd脚本目录使用
 * 大部分活动来自UnicomTask（MIT）~~就是抄的emmm~~
-* TG频道 [text](https://t.me/unicomplus)
-
+* [TG通知频道](https://t.me/unicomplus)
+* 需要添加任务请提Issue
 
 **由于项目特殊性 特此列出程序网络请求地址**
 ### 网络请求列表

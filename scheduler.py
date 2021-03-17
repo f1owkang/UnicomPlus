@@ -69,11 +69,11 @@ def resetJson(file_old,file_new,num):
 def configdate():
     file_name = 'config.json'
     file_times_modified = time.localtime(os.path.getmtime(file_name))
-        year_modified = file_times_modified.tm_year
-        month_modified = file_times_modified.tm_mon
-        day_modified = file_times_modified.tm_mday
-        hour_modified = file_times_modified.tm_hour
-        minute_modified = file_times_modified.tm_min
-        second_modified = file_times_modified.tm_sec
-        return month_modified+day_modified
+    year_modified = file_times_modified.tm_year
+    month_modified = file_times_modified.tm_mon
+    day_modified = file_times_modified.tm_mday
+    hour_modified = file_times_modified.tm_hour
+    minute_modified = file_times_modified.tm_min
+    second_modified = file_times_modified.tm_sec
+    return month_modified+day_modified
         #print('文件的内容最近修改的时间(mtime):  ', year_modified, '年', month_modified, '月', day_modified, '日', '  ', hour_modified, '时',minute_modified, '分', second_modified, '秒')

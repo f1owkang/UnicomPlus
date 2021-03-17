@@ -6,8 +6,7 @@ import time
 
 
 #获取沃之树首页，得到领流量的目标值
-def main(*i):
-    client = i[0]
+def get_woTree_glowList(client):
     index = client.post('https://m.client.10010.com/mactivity/arbordayJson/index.htm')
     index.encoding='utf-8'
     res = index.json()
@@ -15,7 +14,8 @@ def main(*i):
 
 #沃之树任务
 #位置: 首页 --> 游戏 --> 沃之树
-def woTree_task(client):
+def main(*i):
+    client = i[0]
     #领取4M流量*3
     try:
         flowList = get_woTree_glowList(client)

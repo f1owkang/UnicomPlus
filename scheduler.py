@@ -67,7 +67,7 @@ def resetJson(file_old,file_new,num):
                 
 #获取config.json修改日期
 def configdate():
-    file_name = 'config.json'
+    file_name = './config.json'
     file_times_modified = time.localtime(os.path.getmtime(file_name))
     year_modified = file_times_modified.tm_year
     month_modified = file_times_modified.tm_mon

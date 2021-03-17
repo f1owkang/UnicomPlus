@@ -22,6 +22,8 @@ def runscheduler(client,username,num):
     # 检索任务数量
     tasklist=[]   
     listdir('./TaskList',tasklist)
+    #整理数组
+    tasklist.sort()
     logging.info('【任务调度】: 当前任务数量' + str(len(tasklist)))
     user = main.readJson()
     if ('taskNum' in user[0]):
@@ -75,6 +77,6 @@ def configdate():
     hour_modified = file_times_modified.tm_hour
     minute_modified = file_times_modified.tm_min
     second_modified = file_times_modified.tm_sec
-    print('文件的内容最近修改的时间(mtime):  ', year_modified, '年', month_modified, '月', day_modified, '日', '  ', hour_modified, '时',minute_modified, '分', second_modified, '秒')
+    #print('文件的内容最近修改的时间(mtime):  ', year_modified, '年', month_modified, '月', day_modified, '日', '  ', hour_modified, '时',minute_modified, '分', second_modified, '秒')
     return str(month_modified) + str(day_modified)
     

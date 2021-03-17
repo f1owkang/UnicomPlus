@@ -34,7 +34,7 @@ def main(event, context):
     ip,country=check.getnetinfo()
     logging.info('【地址自检】: ' + str(ip) +'（'+ str(country) +'）')
     logging.info('【环境自检】: ' + check.system()+'('+check.cpu()+')')
-    if str(country)!='China':
+    if str(country)!='China' or str(country)!='Taiwan' or str(country)!='Hong Kong':
         logging.info('【地址自检】:您的地址异常，但本版本未做限制，通过！ ')
     users = readJson()
     for user in users:

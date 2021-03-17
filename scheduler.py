@@ -7,7 +7,7 @@ import random
 import time
 import main
 import json
-
+import datetime
 
 #获取任务列表
 def listdir(path, list_name): 
@@ -23,15 +23,19 @@ def runscheduler(client,username,num):
     tasklist=[]   
     listdir('./TaskList',tasklist)
     logging.info('【任务调度】: 当前任务数量' + str(len(tasklist)))
+    user = main.readJson()
+    if ('taskNum' in user[0]):
+      taskNum = user[0]['taskNum']
+    else:
+      logging.error('Json未配置taskNum，停止运行')
+      sys.exit()
+    #日期不同重置任务
+    if config() != datetime.datetime.now().month+datetime.datetime.now().day:
+      resetJson('./','./',0)
+      logging.info('【任务调度】: 日期变更重置任务')
+    logging.info('【任务统计】: 已进行' + taskNum +'个任务')
     forNum = 0
     for task in tasklist:
-      user = main.readJson()
-      if ('taskNum' in user[0]):
-            taskNum = user[0]['taskNum']
-      else:
-            logging.error('Json未配置taskNum，停止运行')
-            sys.exit()
-      logging.info('【任务统计】: 已进行' + taskNum +'个任务')
       if forNum >= int(taskNum):
             logging.info('【任务分配】: ' + task)
             i = importlib.import_module('TaskList.'+task)
@@ -60,3 +64,16 @@ def resetJson(file_old,file_new,num):
             newpath = os.path.join(file_new,os.path.split(f11)[1])
             with open(newpath,'w') as f2:
                 json.dump(data,f2)       # 写入f2文件到本地
+                
+#获取config.json修改日期
+def configdate():
+    file_name = 'config.json'
+    file_times_modified = time.localtime(os.path.getmtime(file_name))
+        year_modified = file_times_modified.tm_year
+        month_modified = file_times_modified.tm_mon
+        day_modified = file_times_modified.tm_mday
+        hour_modified = file_times_modified.tm_hour
+        minute_modified = file_times_modified.tm_min
+        second_modified = file_times_modified.tm_sec
+        return month_modified+day_modified
+        #print('文件的内容最近修改的时间(mtime):  ', year_modified, '年', month_modified, '月', day_modified, '日', '  ', hour_modified, '时',minute_modified, '分', second_modified, '秒')

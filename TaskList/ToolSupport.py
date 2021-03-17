@@ -8,10 +8,11 @@ import pytz
 from lxml.html import fromstring
 
 
-def mian(*i):
+def main(*i):
     client = i[0]
     username= i[1]
     getIntegral(client)
+    actionFlow(client,username)
 
 #防刷校验
 def check(client):

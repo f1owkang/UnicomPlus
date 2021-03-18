@@ -12,9 +12,9 @@
 ### 网络请求列表
 |网址 |用途 |备注 |
 |---|---|---|
-|  http://ip-api.com/json/| 获取国家ip信息 | 备用 |
+| http://ip-api.com/json/ | 获取国家ip信息 | 备用 |
 | https://myip.ipip.net/ | 获取国家信息| 主要 |
-|  联通营业厅网址|完成活动  |  |
+| 联通营业厅网址 | 完成活动 ||
 
 -------
 
@@ -34,17 +34,19 @@
 ### 任务列表
 | 任务名称 | 键值 | 说明 |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| DailyCollectflow.py | 0 | 流量 |
+| DailyGamecenter.py | 1 | 积分 |
+| DailyOneG.py | 2 | 流量 |
+| DailyLuck.py | 3 | 流量,积分,实物 |
+| DailyOpenbox.py | 4 | 流量 |
+| DailyPoints.py | 5 | 积分 |
+| DailyPointsluck.py | 6 | 积分 |
+| DailySignin.py | 7 | 积分 |
+| DailyWotree.py | 8 | 流量 |
+| ShortOlympic.py | 9 | 积分 |
+| ToolSupport.py | 10 | 激活即将过期流量包 |
 
+-------
 
 ### 免责声明
 **请不要把我仓库脚本用在淘宝、咸鱼等平台进行商业谋利，否则我会删库跑路.**

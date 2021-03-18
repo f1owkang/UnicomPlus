@@ -27,7 +27,7 @@ def main(*i):
                 logging.info('【4G流量包-看视频】: 已完成' + ' x' + str(i+1))
             #等待1秒钟
             time.sleep(1)
-            #下软件
+"""
             downloadProg = client.post('https://act.10010.com/SigninApp/mySignin/addFlow',data2)
             downloadProg.encoding='utf-8'
             res2 = downloadProg.json()
@@ -37,6 +37,7 @@ def main(*i):
                 logging.info('【4G流量包-下软件】: 已完成' + ' x' + str(i+1))
             #等待1秒钟
             time.sleep(1)
+"""
     except Exception as e:
         print(traceback.format_exc())
         logging.error('【4G流量包】: 错误，原因为: ' + str(e))

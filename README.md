@@ -4,7 +4,7 @@
 * 支持多用户 需配置json
 * 由于脚本使用相对路径 需cd脚本目录使用
 * 大部分活动来自UnicomTask（MIT）~~就是抄的emmm~~
-* TG频道 [text](https://t.me/unicomplus)
+* [TG通知频道](https://t.me/unicomplus)
 
 -------
 
@@ -14,7 +14,7 @@
 |---|---|---|
 | http://ip-api.com/json/ | 获取国家ip信息 | 备用 |
 | https://myip.ipip.net/ | 获取国家信息| 主要 |
-| 联通营业厅网址 | 完成活动 ||
+| 联通营业厅网址 | 完成活动 |  |
 
 -------
 
